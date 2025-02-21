@@ -34,6 +34,7 @@ class ServerSeeder extends Seeder
                 'backup_limit' => 16,
                 'snapshot_limit' => 16,
                 'bandwidth_limit' => 100 * 1024 * 1024 * 1024,
+                'bandwidth_speed' => 128,
             ];
         });
     }

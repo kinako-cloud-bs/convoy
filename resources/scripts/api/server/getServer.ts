@@ -49,6 +49,7 @@ export interface ServerBuild {
         snapshots: number | null
         backups: number | null
         bandwidth: number | null // bytes
+        bandwidth_speed: number | null // mb
         addresses: {
             ipv4: Address[]
             ipv6: Address[]
@@ -107,6 +108,7 @@ export const rawDataToServerBuild = (data: any): ServerBuild => ({
         snapshots: data.limits.snapshots,
         backups: data.limits.backups,
         bandwidth: data.limits.bandwidth,
+        bandwidth_speed: data.limits.bandwidth_speed,
         addresses: {
             ipv4: data.limits.addresses.ipv4.map((address: any) =>
                 rawDataToAddress(address)

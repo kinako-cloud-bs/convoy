@@ -4,6 +4,7 @@ return [
     'create_server' => 'Create Server',
     'backup_limit' => 'Backup Limit',
     'bandwidth_limit' => 'Bandwidth Limit',
+    'bandwidth_speed' => 'Bandwidth Speed',
     'bandwidth_usage' => 'Bandwidth Usage',
     'snapshot_limit' => 'Snapshots Limit',
     'limit_placeholder' => 'Leave blank for no limit',

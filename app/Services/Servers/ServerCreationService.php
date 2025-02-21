@@ -59,6 +59,7 @@ class ServerCreationService
             'snapshot_limit' => Arr::get($data, 'limits.snapshots'),
             'backup_limit' => Arr::get($data, 'limits.backups'),
             'bandwidth_limit' => Arr::get($data, 'limits.bandwidth'),
+            'bandwidth_speed' => Arr::get($data, 'limits.bandwidth_speed'),
         ]);
 
         $server->refresh();

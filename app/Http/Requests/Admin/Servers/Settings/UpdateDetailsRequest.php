@@ -31,6 +31,7 @@ class UpdateDetailsRequest extends BaseApiRequest
             'limits.snapshot_limit' => $rules['snapshot_limit'],
             'limits.backup_limit' => $rules['backup_limit'],
             'limits.bandwidth_limit' => $rules['bandwidth_limit'],
+            'limits.bandwidth_speed' => $rules['bandwidth_speed'],
         ];
     }
 

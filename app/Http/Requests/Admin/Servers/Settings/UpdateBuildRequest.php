@@ -24,6 +24,7 @@ class UpdateBuildRequest extends BaseApiRequest
             'snapshot_limit' => $rules['snapshot_limit'],
             'backup_limit' => $rules['backup_limit'],
             'bandwidth_limit' => $rules['bandwidth_limit'],
+            'bandwidth_speed' => $rules['bandwidth_speed'],
             'bandwidth_usage' => $rules['bandwidth_usage'],
         ];
     }

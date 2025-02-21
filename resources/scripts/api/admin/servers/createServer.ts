@@ -8,6 +8,7 @@ interface ServerLimits {
     snapshots: number | null
     backups: number | null
     bandwidth: number | null
+    bandwidth_speed: number | null
     addressIds: number[]
 }
 
@@ -46,8 +47,8 @@ const createServer = async ({
         },
         ...(accountPassword &&
             accountPassword.length > 0 && {
-                account_password: accountPassword,
-            }),
+            account_password: accountPassword,
+        }),
         should_create_server: shouldCreateServer,
         ...(shouldCreateServer && {
             template_uuid: templateUuid,

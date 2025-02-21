@@ -50,6 +50,10 @@ const ServerBuildSettingsCard = () => {
             z.preprocess(Number, z.number().min(0)),
         ]),
         bandwidthUsage: z.preprocess(Number, z.number().min(0)),
+        bandwidthSpeed: z.union([
+            z.literal(''),
+            z.preprocess(Number, z.number().min(0)),
+        ]),
     })
 
     const form = useForm({
@@ -65,6 +69,7 @@ const ServerBuildSettingsCard = () => {
                 ? (server.limits.bandwidth / 1048576).toString()
                 : '',
             bandwidthUsage: (server.usages.bandwidth / 1048576).toString(),
+            bandwidthSpeed: server.limits.bandwidth_speed?.toString() ?? '',
         },
     })
 
@@ -76,6 +81,7 @@ const ServerBuildSettingsCard = () => {
             backupLimit,
             bandwidthLimit,
             bandwidthUsage,
+            bandwidthSpeed,
             ...data
         } = _data as z.infer<typeof schema>
         clearFlashes()
@@ -89,6 +95,7 @@ const ServerBuildSettingsCard = () => {
                 bandwidthLimit:
                     bandwidthLimit !== '' ? bandwidthLimit * 1048576 : null,
                 bandwidthUsage: bandwidthUsage * 1048576,
+                bandwidthSpeed: bandwidthSpeed !== '' ? bandwidthSpeed : null,
                 ...data,
             })
 
@@ -104,6 +111,7 @@ const ServerBuildSettingsCard = () => {
                 bandwidthLimit:
                     bandwidthLimit !== '' ? bandwidthLimit.toString() : '',
                 bandwidthUsage: bandwidthUsage.toString(),
+                bandwidthSpeed: bandwidthSpeed.toString(),
             })
         } catch (error) {
             clearAndAddHttpError(error as any)
@@ -151,6 +159,14 @@ const ServerBuildSettingsCard = () => {
                             <TextInputForm
                                 name='bandwidthUsage'
                                 label={`${tIndex('bandwidth_usage')} (MiB)`}
+                            />
+                            <TextInputForm
+                                name='bandwidthSpeed'
+                                label={`${tIndex('bandwidth_speed')} (MiB)`}
+                                placeholder={
+                                    tIndex('limit_placeholder') ??
+                                    'Leave blank for no limit'
+                                }
                             />
                         </div>
                     </FormCard.Body>

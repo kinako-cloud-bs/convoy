@@ -42,6 +42,7 @@ class Server extends Model
         'snapshot_limit' => 'present|nullable|integer|min:0',
         'backup_limit' => 'present|nullable|integer|min:0',
         'bandwidth_limit' => 'present|nullable|integer|min:0',
+        'bandwidth_speed' => 'present|nullable|min:0',
         'hydrated_at' => 'nullable|date',
     ];
 

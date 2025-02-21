@@ -33,6 +33,7 @@ class StoreServerRequest extends BaseApiRequest
             'limits.snapshots' => $rules['snapshot_limit'],
             'limits.backups' => $rules['backup_limit'],
             'limits.bandwidth' => $rules['bandwidth_limit'],
+            'limits.bandwidth_speed' => $rules['bandwidth_speed'],
             'limits.address_ids' => 'sometimes|nullable|array',
             'limits.address_ids.*' => 'integer|exists:ip_addresses,id',
             'account_password' => ['required_if:should_create_server,1', 'string', 'min:8', 'max:191', new Password(

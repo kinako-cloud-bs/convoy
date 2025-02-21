@@ -22,7 +22,7 @@ class ServerRateLimitsSyncService
                 if ($server->bandwidth_usage >= $server->bandwidth_limit && isset($server->bandwidth_limit)) {
                     $this->service->updateRateLimit($server, 1);
                 } else {
-                    $this->service->updateRateLimit($server);
+                    $this->service->updateRateLimit($server, $server->bandwidth_speed ?? 0);
                 }
             } catch (ProxmoxConnectionException $e) {
                 // do nothing

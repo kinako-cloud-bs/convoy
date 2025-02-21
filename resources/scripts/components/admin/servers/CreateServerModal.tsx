@@ -68,6 +68,10 @@ const CreateServerModal = ({ nodeId, userId, open, onClose }: Props) => {
             z.literal(''),
             z.preprocess(Number, z.number().min(0)),
         ]),
+        bandwidthSpeed: z.union([
+            z.literal(''),
+            z.preprocess(Number, z.number().min(0)),
+        ]),
         accountPassword: password(usKeyboardCharacters()).nonempty(),
         shouldCreateServer: z.literal(true),
         startOnCompletion: z.boolean(),
@@ -99,6 +103,10 @@ const CreateServerModal = ({ nodeId, userId, open, onClose }: Props) => {
             z.literal(''),
             z.preprocess(Number, z.number().min(0)),
         ]),
+        bandwidthSpeed: z.union([
+            z.literal(''),
+            z.preprocess(Number, z.number().min(0)),
+        ]),
         accountPassword: password(usKeyboardCharacters()).optional(),
         shouldCreateServer: z.literal(false),
         startOnCompletion: z.boolean(),
@@ -125,6 +133,7 @@ const CreateServerModal = ({ nodeId, userId, open, onClose }: Props) => {
             snapshotLimit: '0',
             backupLimit: '',
             bandwidthLimit: '',
+            bandwidthSpeed: '',
             accountPassword: '',
             shouldCreateServer: true,
             startOnCompletion: false,
@@ -144,6 +153,7 @@ const CreateServerModal = ({ nodeId, userId, open, onClose }: Props) => {
             snapshotLimit,
             backupLimit,
             bandwidthLimit,
+            bandwidthSpeed,
             addressIds,
             accountPassword,
             ...data
@@ -159,8 +169,8 @@ const CreateServerModal = ({ nodeId, userId, open, onClose }: Props) => {
                     disk: disk * 1048576,
                     snapshots: snapshotLimit !== '' ? snapshotLimit : null,
                     backups: backupLimit !== '' ? backupLimit : null,
-                    bandwidth:
-                        bandwidthLimit !== '' ? bandwidthLimit * 1048576 : null,
+                    bandwidth: bandwidthLimit !== '' ? bandwidthLimit * 1048576 : null,
+                    bandwidth_speed: bandwidthSpeed !== '' ? bandwidthSpeed : null,
                     addressIds,
                 },
                 accountPassword: accountPassword ? accountPassword : null,
@@ -253,6 +263,14 @@ const CreateServerModal = ({ nodeId, userId, open, onClose }: Props) => {
                                 }
                             />
                         </div>
+                        <TextInputForm
+                            name={'bandwidthSpeed'}
+                            label={`${t('bandwidth_speed')} (MiB)`}
+                            placeholder={
+                                t('limit_placeholder') ??
+                                'Leave blank for no limit'
+                            }
+                        />
                         <TextInputForm
                             name={'accountPassword'}
                             label={tStrings('system_os_password')}

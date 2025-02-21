@@ -13,6 +13,7 @@ class ServerLimitsData extends Data
         public ?int                $snapshots,
         public ?int                $backups,
         public ?int                $bandwidth,
+        public ?float              $bandwidth_speed,
         public ServerAddressesData $addresses,
         public ?string             $mac_address,
     )

@@ -263,6 +263,7 @@ CREATE TABLE `servers` (
   `snapshot_limit` int unsigned DEFAULT NULL,
   `backup_limit` int unsigned DEFAULT NULL,
   `bandwidth_limit` int unsigned DEFAULT NULL,
+  `bandwidth_speed` float unsigned DEFAULT NULL,
   `hydrated_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,

@@ -37,6 +37,7 @@ class ServerDetailService
                 'snapshots' => $server->snapshot_limit,
                 'backups' => $server->backup_limit,
                 'bandwidth' => $server->bandwidth_limit,
+                'bandwidth_speed' => $server->bandwidth_speed,
                 'addresses' => $addresses,
                 'mac_address' => $this->networkService->getMacAddresses($server)->eloquent,
             ],

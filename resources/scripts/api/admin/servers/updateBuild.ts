@@ -10,6 +10,7 @@ interface UpdateServerBuildParameters {
     backupLimit: number | null
     bandwidthLimit: number | null
     bandwidthUsage: number
+    bandwidthSpeed: number | null
 }
 
 const updateBuild = async (
@@ -20,6 +21,7 @@ const updateBuild = async (
         backupLimit,
         bandwidthLimit,
         bandwidthUsage,
+        bandwidthSpeed,
         ...params
     }: UpdateServerBuildParameters
 ) => {
@@ -31,6 +33,7 @@ const updateBuild = async (
         backup_limit: backupLimit,
         bandwidth_limit: bandwidthLimit,
         bandwidth_usage: bandwidthUsage,
+        bandwidth_speed: bandwidthSpeed,
         ...params,
     })
 

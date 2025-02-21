@@ -124,10 +124,12 @@ class NetworkService
             'policy_out' => 'ACCEPT',
         ]);
 
+        $rate = $server->bandwidth_speed ?? 0;
+
         $macAddress = $macAddresses->eloquent ?? $macAddresses->proxmox;
 
         $this->allocationRepository->setServer($server)->update(
-            ['net0' => "virtio={$macAddress},bridge={$server->node->network},firewall=1"],
+            ['net0' => "virtio={$macAddress},bridge={$server->node->network},firewall=1,rate={$rate}"],
         );
     }
 
