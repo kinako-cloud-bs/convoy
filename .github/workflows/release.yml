@@ -78,4 +78,3 @@ jobs:
           files: |
             panel.tar.gz
             checksum.txt
-          token: ${{ secrets.TOKEN }}
