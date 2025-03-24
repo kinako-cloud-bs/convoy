@@ -2,6 +2,7 @@
 
 use Convoy\Http\Controllers\Admin;
 use Convoy\Http\Middleware\Admin\Server\ValidateServerStatusMiddleware;
+use Convoy\Http\Controllers\Client\Servers\ServerController as ClientServerController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -126,6 +127,9 @@ Route::prefix('/servers')->group(function () {
                 ValidateServerStatusMiddleware::class,
             );
             Route::delete('/', [Admin\ServerController::class, 'destroy']);
+
+            Route::get('/state', [ClientServerController::class, 'getState']);
+            Route::patch('/state', [ClientServerController::class, 'updateState']);
 
             Route::prefix('/settings')->group(function () {
                 Route::patch('/build', [Admin\ServerController::class, 'updateBuild']);
